@@ -1,0 +1,50 @@
+server:
+  port: 8801
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/mall?useSSL=false&serverTimezone=UTC
+    username: root
+    password: secret
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  redis:
+    host: localhost
+    port: 6379
+
+  mvc:
+    path-match:
+      matching-strategy: ant_path_matcher
+
+jwt:
+    tokenHeader: Authorization
+    secret: secret
+    expiration: 86400000
+    tokenHead: 'Bearer '
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.hnv99.hmall
+  info:
+    title: Hmall API
+    description: Hmall API
+    version: 1.0.0
+    contact:
+      name: Hmall
+      email: vanhung4499@gmail.com
+    license:
+      name: Apache License, Version 2.0
+      url: https://www.apache.org/licenses/LICENSE-2.0.html
